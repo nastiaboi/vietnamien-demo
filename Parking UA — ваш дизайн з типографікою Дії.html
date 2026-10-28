@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Parking UA — прототип (Figma-дизайн, типографіка Дії)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#d6d9f7;--b1:#1a35f5;--b2:#3d7bf5;--ink:#10142b;--mut:#7b819a;--soft:#f4f5fb;--line:#e8eaf3;--ok:#22c55e;--p:20px;--r:14px;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1b1d33}}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:"Onest","e-Ukraine",-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);font-size:14px;line-height:1.35;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.phone{position:relative;width:min(390px,100vw);height:min(800px,100%);background:var(--soft);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(20,30,120,.3)}
+@media(max-width:430px){.phone{border-radius:0}}
+.s{position:absolute;inset:0;display:none;flex-direction:column;animation:in .2s ease}.s.on{display:flex}
+@keyframes in{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.s{animation:none}}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-align:left}
+button:focus-visible,input:focus-visible{outline:2px solid var(--b2);outline-offset:2px}
+.i{display:inline-flex;width:20px;height:20px;flex:none}.i svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sb{height:40px;flex:none;display:flex;justify-content:space-between;align-items:flex-end;padding:0 var(--p) 6px;font-size:13px;font-weight:500}
+.blue{background:linear-gradient(170deg,var(--b1),var(--b2));color:#fff}
+.w{background:#fff}
+.band{flex:none;background:linear-gradient(170deg,var(--b1),var(--b2));color:#fff}.band .sb{background:none}.hd{flex:none;display:flex;flex-direction:column;align-items:flex-start;padding:8px var(--p) 24px;font-weight:400;font-size:32px;line-height:1.1}
+.hd button{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.body{flex:1;overflow:auto;padding:var(--p)}
+.stack>*+*{margin-top:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:56px;padding:0 12px;border-radius:28px;font-weight:400;font-size:16px;background:var(--b1);color:#fff;}
+.btn.wh{background:#fff;color:var(--b1)}.dia{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:#000;color:#fff;font-size:12px;font-weight:500;flex:none}
+.btn.line{background:#fff;color:var(--b1);border:2px solid var(--b1);box-shadow:none;height:56px;font-size:16px;margin-bottom:8px}
+.ghost{color:#fff;font-size:13px;opacity:.9;height:44px;width:100%;text-align:center}
+.card{background:#fff;border-radius:var(--r);box-shadow:0 2px 8px rgba(30,40,100,.08)}
+.hero{border-radius:18px;padding:var(--p);color:#fff;background:linear-gradient(150deg,var(--b1),var(--b2))}
+.hero small,.mut{opacity:.8;font-size:12px}.mut{color:var(--mut);opacity:1}
+.chip{background:rgba(255,255,255,.2);border-radius:10px;padding:8px 12px;display:inline-flex;gap:6px;align-items:center;font-size:13px}
+.ico{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;flex:none;background:#e8eefc;color:var(--b1)}
+.ico.g{background:linear-gradient(150deg,var(--b1),var(--b2));color:#fff}
+.star{color:#f5b301;display:inline-flex;gap:4px;align-items:center;font-size:13px;color:inherit}.star .i{width:14px;height:14px;color:#f5b301}.star .i svg{fill:#f5b301;stroke:none}
+/* onboarding */
+.ob{padding:0 var(--p) 24px;flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+.bars{display:flex;gap:6px;width:100%;padding-top:8px}.bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.3)}.bars i.f{background:#fff}
+.big{width:60px;height:60px;border-radius:18px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:40px 0 18px}.big .i{width:28px;height:28px}
+.ob h2{font-weight:400;font-size:28px;line-height:1.15;margin-bottom:10px}.ob p{font-size:13px;opacity:.85;line-height:1.5;max-width:280px}
+.list{width:100%;margin:auto 0 20px;background:rgba(255,255,255,.14);border-radius:16px;padding:6px 14px;text-align:left}
+.list div{padding:10px 0;font-size:13px;display:flex;gap:12px;align-items:center}.list b{display:block;font-weight:500}.list span{font-size:12px;opacity:.75}
+.list .i{width:22px;height:22px;padding:4px;border-radius:50%;background:rgba(255,255,255,.2)}
+.fld{width:100%;text-align:left}.fld label{display:block;font-size:12px;opacity:.8}.fld input{width:100%;background:none;border:0;border-bottom:1px solid #fff;color:#fff;padding:10px 0;font:inherit;outline:0;border-radius:0}.fld input::placeholder{color:rgba(255,255,255,.75)}.inp{width:100%;height:52px;padding:0 16px;border-radius:var(--r);background:rgba(255,255,255,.18);border:0;color:#fff;font:inherit;margin-bottom:12px;outline:0}.inp::placeholder{color:rgba(255,255,255,.7)}
+/* map */
+.map{height:260px;flex:none;position:relative;background:#141a2e;overflow:hidden;transition:height .25s;touch-action:none}
+.map.max{height:calc(100% - 64px);flex:1}
+.map svg.m{width:100%;height:100%;display:block;cursor:grab}.map svg.m:active{cursor:grabbing}
+.pin{cursor:pointer}.pin.sel circle.b{fill:#0b1bb0;stroke-width:3}
+.pulse{animation:pl 2s infinite;transform-box:fill-box;transform-origin:center}@keyframes pl{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+.route{animation:dash 1s linear infinite}@keyframes dash{to{stroke-dashoffset:-16}}
+.bal{display:none!important;position:absolute;top:var(--p);left:var(--p);background:rgba(10,15,40,.82);color:#fff;border-radius:12px;padding:6px 12px 6px 6px;font-size:12px;display:flex;gap:8px;align-items:center;pointer-events:none}
+.bal span{background:var(--b1);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:500}.bal b{display:block;font-size:13px}
+.ctl{position:absolute;right:var(--p);top:56px;display:flex;flex-direction:column;gap:8px}
+.ctl button{width:40px;height:40px;border-radius:50%;background:rgba(10,15,40,.82);color:#fff;display:flex;align-items:center;justify-content:center}
+.srch{margin:4px 0 12px;box-shadow:0 2px 8px rgba(30,40,100,.08);background:#fff;border-radius:28px;height:52px;display:flex;align-items:center;gap:10px;padding:0 20px;color:var(--mut)}
+.srch input{flex:1;border:0;outline:0;font:inherit;color:var(--ink);background:none;min-width:0}
+.lots{flex:1;overflow:auto;padding:12px var(--p) 0}.lots.hide{display:none}
+.lots h3{display:flex;justify-content:space-between;align-items:baseline;font-size:20px;font-weight:400;margin-bottom:10px}.lots h3 span{font-size:12px;color:var(--mut);font-weight:400}
+.lot{display:block;width:100%;padding:12px;margin-bottom:10px;border:1.5px solid transparent}.lot.sel{border-color:var(--b1)}
+.lot .t{display:flex;gap:12px;align-items:center}.lot .t>div{flex:1;font-weight:400;font-size:16px}.lot small{display:block;color:var(--mut);font-size:12px;font-weight:400}
+.lot .r{display:flex;gap:14px;font-size:12px;color:var(--mut);margin-top:10px;align-items:center}.lot .r span{display:flex;gap:4px;align-items:center}.lot .r .i{width:14px;height:14px}.lot .r b{margin-left:auto;color:var(--b1);font-size:13px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.act{display:none;margin-bottom:12px;width:100%}.act.on{display:block}
+.pb{height:5px;border-radius:3px;background:rgba(255,255,255,.3);margin-top:10px}.pb i{display:block;height:100%;width:100%;background:var(--ok);border-radius:3px;transition:width 1s linear}
+.nav{flex:none;height:64px;background:#fff;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -4px 16px rgba(0,0,60,.06);padding:0 8px}
+.nav button{width:96px;height:48px;border-radius:12px;font-size:12px;color:var(--mut);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.nav button.on{background:var(--b1);color:#fff}
+/* details */
+.feat{display:flex;gap:12px;align-items:center;padding:12px;font-weight:500}.feat small{display:block;color:var(--mut);font-weight:400;font-size:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.grid2 div{background:rgba(255,255,255,.18);border-radius:12px;padding:10px 12px;font-size:12px}.grid2 b{display:block;font-size:20px;font-weight:500;margin-top:2px}
+.foot{padding:12px var(--p) 16px;background:#fff;flex:none;text-align:center;font-size:12px;color:var(--mut)}.foot .btn{margin-bottom:8px}
+/* time */
+.car{display:flex;gap:12px;align-items:center;padding:10px 12px;border:1.5px solid var(--b1);border-radius:var(--r);background:#fff;width:100%}.car small{display:block;color:var(--mut);font-size:12px}.car>.i:last-child{margin-left:auto;color:var(--mut)}
+.price{text-align:center;color:var(--b1);font-size:44px;font-weight:400;line-height:1.1}.price small{display:block;font-size:12px;color:var(--mut);font-weight:400;margin-top:4px}
+.dial{position:relative;width:180px;height:180px;border-radius:50%;background:#fff;box-shadow:0 8px 30px rgba(30,40,100,.16);margin:12px auto 8px}
+.dial button{position:absolute;width:32px;height:32px;margin:-16px 0 0 -16px;border-radius:50%;font-size:14px;color:#333;text-align:center}
+.dial button.on{background:var(--b1);color:#fff}
+.dial .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:28px;font-weight:500;pointer-events:none}.dial .c small{font-size:12px;color:var(--mut);font-weight:400}
+.pre{display:flex;gap:8px;justify-content:center}.pre button{height:36px;padding:0 14px;border-radius:18px;background:#fff;font-size:13px;display:flex;align-items:center}.pre button.on{background:var(--b1);color:#fff}
+.sum{display:flex;justify-content:space-between;background:#e8eefc;border-radius:12px;padding:12px;margin-bottom:12px;color:var(--b1);font-weight:500;text-align:left}.sum small{display:block;color:var(--mut);font-weight:400;font-size:12px}.sum div:last-child{text-align:right}
+/* pay */
+.pm{display:flex;gap:12px;align-items:center;padding:14px;width:100%;border:1.5px solid transparent;font-weight:500}.pm small{display:block;color:var(--mut);font-weight:400;font-size:12px}
+.pm.on{border-color:var(--b1);background:#f3f6ff}.pm .ico{width:40px;height:40px;background:#000;color:#fff}.pm .ico.g{background:linear-gradient(150deg,var(--b1),var(--b2))}
+.pm .r{margin-left:auto;width:22px;height:22px;border-radius:50%;border:2px solid #ccd;color:#fff;display:flex;align-items:center;justify-content:center}.pm .r .i{width:12px;height:12px;stroke-width:3}.pm.on .r{background:var(--b1);border-color:var(--b1)}
+/* history / profile */
+.hist{padding:12px}.hist .h{display:flex;justify-content:space-between;font-size:12px;color:var(--mut)}.hist .h span{display:flex;gap:6px}.hist .h .i{width:14px;height:14px}
+.hist .h em{font-style:normal;background:#dcfce7;color:#15803d;padding:2px 10px;border-radius:10px;height:20px}.hist .h em.a{background:#dbeafe;color:#1d4ed8}
+.hist .m{display:flex;gap:12px;align-items:center;margin:12px 0;font-weight:500}
+.hist .f{display:flex;gap:28px;border-top:1px solid var(--line);padding-top:10px;align-items:center}.hist small{display:block;color:var(--mut);font-size:12px}.hist .f button{margin-left:auto;color:var(--b1);font-size:13px;display:flex;gap:6px;align-items:center}.hist .f .i{width:16px;height:16px}
+.stats{display:flex;justify-content:space-around;text-align:center;padding:16px;border-radius:18px}.stats small{display:block;font-size:12px;opacity:.8}.stats b{font-size:22px;font-weight:500}
+.fl{display:flex;gap:8px}.fl button{height:32px;padding:0 14px;border-radius:16px;background:#fff;font-size:12px;display:flex;align-items:center}.fl button.on{background:var(--b1);color:#fff}
+.row{display:flex;gap:12px;align-items:center;padding:12px var(--p);border-bottom:1px solid var(--line);width:100%;min-height:60px}.row small{display:block;color:var(--mut);font-size:12px}.row:last-child{border:0}.row>.i:last-child{margin-left:auto;color:var(--mut);width:18px;height:18px}
+.sec{font-size:12px;color:var(--mut);margin:16px 4px 8px;letter-spacing:.04em}
+.toast{position:absolute;left:var(--p);right:var(--p);bottom:80px;background:#10142b;color:#fff;padding:12px;border-radius:12px;font-size:13px;text-align:center;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:9}.toast.on{opacity:1;transform:none}
+</style></head><body>
+<div class="phone">
+
+<section class="s blue on" id="login"><div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+<div class="ob" style="align-items:flex-start;text-align:left"><div class="big" style="margin:48px 0 18px"><b class="i" data-i="car"></b></div>
+<h2 style="font-size:30px">Parking UA</h2><p>Зручний сервіс паркування для українців</p>
+<div style="margin-top:auto;width:100%"><button class="btn wh" style="margin-bottom:16px;justify-content:flex-start" onclick="go('welcome')"><b class="dia">Дія</b>Увійти через Дію<b class="i" style="margin-left:auto" data-i="arr"></b></button>
+<div style="text-align:center;font-size:12px;opacity:.7;margin-bottom:16px">або</div>
+<div class="fld"><label for="ph">Номер телефону</label><input id="ph" placeholder="+380" inputmode="tel"></div><div style="height:24px"></div><button class="btn wh" onclick="go('welcome')">Продовжити</button>
+<p style="font-size:12px;text-align:center;margin:16px auto 0;opacity:.85">Продовжуючи, ви приймаєте <u>Умови використання</u></p></div></div></section>
+
+<section class="s blue" id="welcome"><div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+<div class="ob"><div class="bars"><i class="f"></i><i></i><i></i><i></i></div><div class="big"><b class="i" data-i="park"></b></div><h2>Вітаємо!</h2><p>Паркування у Києві<br>Знаходьте, бронюйте та оплачуйте паркування в один клік</p>
+<div class="list"><div><b class="i" data-i="pin"></b><div style="display:block"><b>Пошук паркування</b><span>Знайдіть вільне місце поруч</span></div></div><div><b class="i" data-i="card"></b><div style="display:block"><b>Онлайн оплата</b><span>Безготівкові розрахунки</span></div></div><div><b class="i" data-i="bell"></b><div style="display:block"><b>Сповіщення</b><span>Нагадування про закінчення часу</span></div></div></div>
+<button class="btn wh" onclick="go('geo')">Почати <b class="i" data-i="chev"></b></button></div></section>
+
+<section class="s blue" id="geo"><div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+<div class="ob"><div class="bars"><i class="f"></i><i class="f"></i><i></i><i></i></div><div class="big"><b class="i" data-i="pin"></b></div><h2>Доступ до геолокації</h2><p>Дозвольте доступ до вашого місцезнаходження, щоб знаходити найближчі паркування та будувати маршрути</p>
+<div class="list"><div><b class="i" data-i="ok"></b><div style="display:block"><b>Пошук паркувань поблизу</b><span>Автоматичний пошук найближчих місць</span></div></div><div><b class="i" data-i="ok"></b><div style="display:block"><b>Навігація до місця</b><span>Побудова маршруту до паркування</span></div></div><div><b class="i" data-i="ok"></b><div style="display:block"><b>Швидке бронювання</b><span>Резервування місць одним кліком</span></div></div></div>
+<button class="btn wh" onclick="go('notif')">Дозволити <b class="i" data-i="chev"></b></button><button class="ghost" onclick="go('notif')">Не зараз</button></div></section>
+
+<section class="s blue" id="notif"><div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+<div class="ob"><div class="bars"><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div><div class="big"><b class="i" data-i="bell"></b></div><h2>Сповіщення</h2><p>Отримуйте важливі повідомлення про статус паркування та нагадування</p>
+<div class="list"><div><b class="i" data-i="clock"></b><div style="display:block"><b>Закінчення часу</b><span>За 15 хвилин до завершення паркування</span></div></div><div><b class="i" data-i="ok"></b><div style="display:block"><b>Підтвердження оплати</b><span>Чеки та підтвердження транзакцій</span></div></div><div><b class="i" data-i="gift"></b><div style="display:block"><b>Спеціальні пропозиції</b><span>Знижки та акційні пропозиції</span></div></div></div>
+<button class="btn wh" onclick="go('cam')">Дозволити <b class="i" data-i="chev"></b></button><button class="ghost" onclick="go('cam')">Не зараз</button></div></section>
+
+<section class="s blue" id="cam"><div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+<div class="ob"><div class="bars"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></div><div class="big"><b class="i" data-i="cam"></b></div><h2>Доступ до камери</h2><p>Дозвольте доступ до камери для сканування QR-кодів та документів</p>
+<div class="list"><div><b class="i" data-i="ok"></b><div style="display:block"><b>QR-код входу/виходу</b><span>Швидкий в’їзд та виїзд з паркування</span></div></div><div><b class="i" data-i="ok"></b><div style="display:block"><b>Сканування документів</b><span>Технічний паспорт автомобіля</span></div></div><div><b class="i" data-i="ok"></b><div style="display:block"><b>Швидка оплата</b><span>Сканування QR для оплати</span></div></div></div>
+<button class="btn wh" onclick="go('main')">Завершити <b class="i" data-i="chev"></b></button><button class="ghost" onclick="go('main')">Пропустити</button></div></section>
+
+<!-- MAIN -->
+<section class="s" id="main"><div class="band"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="hd" style="flex-direction:row;justify-content:space-between;align-items:flex-end;padding-bottom:16px">Паркування<span style="font-size:12px;background:rgba(255,255,255,.22);border-radius:14px;padding:6px 12px;margin-bottom:4px">Баланс 450 грн</span></div></div>
+<div class="map" id="map"><svg class="m" id="svg" role="img" aria-label="Карта паркувань"><g id="world"></g></svg>
+<div class="bal"><span>ІП</span><div>Баланс<b>450 грн</b></div></div>
+<div class="ctl"><button aria-label="Моє місцезнаходження" onclick="locate()"><b class="i" data-i="nav"></b></button><button aria-label="Збільшити" onclick="zoomBy(1.3)"><b class="i" data-i="plus"></b></button><button aria-label="Зменшити" onclick="zoomBy(1/1.3)"><b class="i" data-i="minus"></b></button><button aria-label="На весь екран" onclick="expand()"><b class="i" data-i="max"></b></button></div>
+</div>
+<div class="lots" id="lots"><label class="srch"><b class="i" data-i="search"></b><input id="q" placeholder="Адреса або назва паркування..." oninput="render()"></label><button class="act hero" id="act" onclick="toast('Паркування активне до '+endT)"><small>Активне паркування</small><div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0"><span style="font-size:22px" id="tm">00:00:00</span><span id="ap"></span></div><small id="an"></small><div class="pb"><i id="pb"></i></div></button>
+<h3>Доступні паркування <span id="cnt">4 місць</span></h3><div id="ll"></div></div>
+<div class="nav"><button class="on"><b class="i" data-i="pin"></b>Паркування</button><button onclick="go('hist')"><b class="i" data-i="clock"></b>Історія</button><button onclick="go('prof')"><b class="i" data-i="user"></b>Профіль</button></div></section>
+
+<section class="s" id="det"><div class="band"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="hd"><button onclick="go('main')" aria-label="Закрити"><b class="i" data-i="x"></b></button>Деталі паркування</div></div>
+<div class="body stack"><div class="hero"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:17px;font-weight:500" id="dn"></b><span class="chip" style="padding:4px 10px"><span class="star"><b class="i" data-i="star"></b><span id="dr"></span></span></span></div><small style="display:flex;gap:6px;margin-top:8px;align-items:center"><b class="i" data-i="pin" style="width:14px;height:14px"></b><span id="da"></span></small><small style="display:flex;gap:6px;margin-top:4px;align-items:center"><b class="i" data-i="clock" style="width:14px;height:14px"></b><span id="dd"></span></small>
+<div class="grid2"><div>Вільно місць<b id="df"></b></div><div>Ціна<b id="dp"></b></div></div></div>
+<div class="card feat"><span class="ico" style="background:#dcfce7;color:#16a34a"><b class="i" data-i="ok"></b></span><div>Крита парковка<small>Захист від дощу та снігу</small></div></div>
+<div class="card feat"><span class="ico"><b class="i" data-i="clock"></b></span><div>Працює цілодобово<small>24/7 доступ</small></div></div>
+<div class="card feat"><span class="ico" style="background:#f3e8ff;color:#9333ea;font-weight:500">₴</span><div>Безготівковий розрахунок<small>Оплата через додаток</small></div></div></div>
+<div class="foot"><button class="btn line" onclick="go('main')"><b class="i" data-i="nav"></b>Показати маршрут на карті</button><button class="btn" onclick="go('time')">Активувати паркування</button>Списання почнеться після активації</div></section>
+
+<section class="s" id="time"><div class="band"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="hd"><button onclick="go('det')" aria-label="Назад"><b class="i" data-i="back"></b></button>Час паркування</div></div>
+<div class="body stack"><div class="hero" style="padding:12px var(--p)"><b style="font-weight:500" class="ln"></b></div>
+<div class="mut" style="margin-bottom:-4px">Оберіть автомобіль</div>
+<button class="car" onclick="toast('Інший автомобіль: у наступній версії')"><span class="ico g"><b class="i" data-i="car"></b></span><span>AA 1234 BB<small>Tesla Model 3</small></span><b class="i" data-i="down"></b></button>
+<div class="price"><span id="tp"></span><small id="tr"></small></div>
+<div class="dial" id="dial"><div class="c"><span id="tmn"></span><small>тривалість</small></div></div>
+<div class="pre"><button data-m="15">15 хв</button><button data-m="30">30 хв</button><button data-m="60">1 год</button><button data-m="120">2 год</button></div></div>
+<div class="foot"><div class="sum"><div><small>До оплати</small><span id="s1"></span></div><div><small>Тривалість</small><span id="s2"></span></div></div><button class="btn" style="margin:0" onclick="go('pay')">Перейти до оплати</button></div></section>
+
+<section class="s" id="pay"><div class="band"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="hd"><button onclick="go('time')" aria-label="Назад"><b class="i" data-i="back"></b></button>Оплата паркування</div></div>
+<div class="body stack"><div class="hero"><div style="display:flex;justify-content:space-between"><b style="font-weight:500" class="ln"></b><span class="star"><b class="i" data-i="star"></b><span class="rt"></span></span></div><small class="la" style="display:block;margin-top:4px"></small>
+<div class="chip" style="margin:12px 0;display:block;width:100%"><small>Автомобіль</small><div>AA 1234 BB · Tesla Model 3</div></div><span class="chip" id="pm"></span><small style="display:block;margin-top:12px">До оплати</small><div style="font-size:34px" id="pt"></div></div>
+<div class="mut">Оберіть спосіб оплати</div>
+<button class="card pm on" onclick="pick(0)"><span class="ico"><b class="i" data-i="apple"></b></span><span>Apple Pay<small>Швидка та безпечна оплата</small></span><span class="r"><b class="i" data-i="ok"></b></span></button>
+<button class="card pm" onclick="pick(1)"><span class="ico g"><b class="i" data-i="card"></b></span><span>Банківська картка<small>Visa, Mastercard</small></span><span class="r"><b class="i" data-i="ok"></b></span></button></div>
+<div class="foot"><button class="btn" id="pb2" onclick="paid()"></button>Після оплати паркування буде активовано</div></section>
+
+<section class="s" id="hist"><div class="band"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="hd">Історія</div></div>
+<div class="body stack"><div class="stats blue"><div><small>Всього</small><b id="hn">2</b></div><div><small>Цього місяця</small><b id="hm">2</b></div><div><small>Витрачено</small><b id="hs">200 ₴</b></div></div>
+<div class="srch card" style="position:static;box-shadow:0 2px 8px rgba(30,40,100,.08)"><b class="i" data-i="search"></b><input placeholder="Пошук за локацією або місцем..."></div>
+<div class="fl"><button class="on">Всі</button><button>Завершені</button><button>Скасовані</button></div><div id="hl" class="stack">
+<div class="card hist"><div class="h"><span><b class="i" data-i="cal"></b>5 грудня 2025<br>14:30 – 16:30</span><em>Завершено</em></div><div class="m"><span class="ico g"><b class="i" data-i="pin"></b></span><div>ТРЦ Глобус<small class="mut" style="display:block;font-weight:400">пл. Незалежності, 1</small></div></div><div class="f"><div><small>Тривалість</small>2 год</div><div><small>Вартість</small>100 ₴</div><button onclick="toast('Квитанцію збережено')"><b class="i" data-i="dl"></b>Квитанція</button></div></div>
+<div class="card hist"><div class="h"><span><b class="i" data-i="cal"></b>6 грудня 2025<br>14:30 – 16:30</span><em>Завершено</em></div><div class="m"><span class="ico g"><b class="i" data-i="pin"></b></span><div>вул. Хрещатик, 22<small class="mut" style="display:block;font-weight:400">Downtown Garage A</small></div></div><div class="f"><div><small>Тривалість</small>2 год</div><div><small>Вартість</small>100 ₴</div><button onclick="toast('Квитанцію збережено')"><b class="i" data-i="dl"></b>Квитанція</button></div></div></div></div>
+<div class="nav"><button onclick="go('main')"><b class="i" data-i="pin"></b>Паркування</button><button class="on"><b class="i" data-i="clock"></b>Історія</button><button onclick="go('prof')"><b class="i" data-i="user"></b>Профіль</button></div></section>
+
+<section class="s" id="prof"><div class="band"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="hd">Профіль</div></div>
+<div class="body"><div class="hero" style="display:flex;justify-content:space-between;align-items:center"><div><b style="font-weight:400;font-size:20px">Олег Мельник</b><br><small>+380 67 123 4567</small></div><span class="chip"><b class="i" data-i="gift" style="width:16px;height:16px"></b>250 Бонусів</span></div>
+<div class="sec">МІЙ АКАУНТ</div><div class="card"><button class="row" onclick="toast('Мої автомобілі: 2')"><span class="ico"><b class="i" data-i="car"></b></span><span>Мої автомобілі<small>2 автомобілі</small></span><b class="i" data-i="chev"></b></button><button class="row" onclick="toast('Способи оплати')"><span class="ico"><b class="i" data-i="card"></b></span><span>Способи оплати<small>Apple Pay, •••• 4242</small></span><b class="i" data-i="chev"></b></button><button class="row" onclick="toast('250 балів')"><span class="ico"><b class="i" data-i="gift"></b></span><span>Бонуси та промокоди<small>250 балів</small></span><b class="i" data-i="chev"></b></button></div>
+<div class="sec">НАЛАШТУВАННЯ</div><div class="card"><button class="row" onclick="toast('Сповіщення')"><span class="ico"><b class="i" data-i="bell"></b></span><span>Сповіщення<small>Увімкнено</small></span><b class="i" data-i="chev"></b></button><button class="row" onclick="toast('Безпека')"><span class="ico"><b class="i" data-i="shield"></b></span><span>Безпека та конфіденційність<small>Керування даними</small></span><b class="i" data-i="chev"></b></button><button class="row" onclick="toast('Налаштування')"><span class="ico"><b class="i" data-i="gear"></b></span><span>Загальні налаштування<small>Мова, регіон</small></span><b class="i" data-i="chev"></b></button></div>
+<div class="card" style="margin-top:16px"><button class="row" style="color:#e11d48" onclick="go('login')"><span class="ico" style="background:#ffe4e6;color:#e11d48"><b class="i" data-i="out"></b></span>Вийти з акаунту<b class="i" data-i="chev"></b></button></div></div>
+<div class="nav"><button onclick="go('main')"><b class="i" data-i="pin"></b>Паркування</button><button onclick="go('hist')"><b class="i" data-i="clock"></b>Історія</button><button class="on"><b class="i" data-i="user"></b>Профіль</button></div></section>
+
+<div class="toast" id="toast"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id),Q=s=>[...document.querySelectorAll(s)];
+const IC={pin:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',clock:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',user:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',bell:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/>',shield:'<path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V6l8-3 8 3z"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',gift:'<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/>',card:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>',car:'<path d="M19 17h2a1 1 0 0 0 1-1v-3a2 2 0 0 0-1.5-1.9L16 10l-2.2-2.3A2 2 0 0 0 12 7H5a1.5 1.5 0 0 0-1.4.9L2.2 11A4 4 0 0 0 2 12v4a1 1 0 0 0 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',search:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',ok:'<path d="M20 6 9 17l-5-5"/>',dl:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',out:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',x:'<path d="M18 6 6 18M6 6l12 12"/>',back:'<path d="m12 19-7-7 7-7M19 12H5"/>',arr:'<path d="M5 12h14M12 5l7 7-7 7"/>',chev:'<path d="m9 18 6-6-6-6"/>',down:'<path d="m6 9 6 6 6-6"/>',nav:'<path d="m3 11 19-9-9 19-2-8-8-2Z"/>',max:'<path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>',plus:'<path d="M12 5v14M5 12h14"/>',minus:'<path d="M5 12h14"/>',cam:'<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/>',cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',park:'<rect x="4" y="3" width="16" height="18" rx="4"/><path d="M9.5 17V7h3.2a3 3 0 0 1 0 6H9.5"/>',star:'<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',apple:'<path d="M16 3c0 2-1.5 3.5-3.5 3.5C12.5 4.5 14 3 16 3zM12 8c1.2 0 1.8.6 3 .6s2.2-.8 3.4-.8c-2.800 1.800-2.400 6 .6 7.200-1 2.600-2.600 5-4.500 5-1 0-1.500-.6-2.500-.6s-1.600.6-2.600.6C7.200 20 4 14.800 5.600 11 6.600 8.800 8.700 8 10 8c.8 0 1.500 0 2 0z"/>'};
+const ic=(n,s)=>'<b class="i"'+(s?' style="width:'+s+'px;height:'+s+'px"':'')+'><svg viewBox="0 0 24 24">'+IC[n]+'</svg></b>';
+function icons(r=document){r.querySelectorAll('b.i[data-i]').forEach(e=>{e.innerHTML='<svg viewBox="0 0 24 24">'+IC[e.dataset.i]+'</svg>';e.removeAttribute('data-i')})}
+icons();
+const lots=[{n:'Downtown Garage A',a:'вул. Хрещатик, 22',r:'4.8',f:24,t:50,p:50,d:'0.3',x:330,y:330},{n:'Центральний паркінг',a:'пл. Незалежності, 1',r:'4.6',f:12,t:40,p:45,d:'0.5',x:520,y:300},{n:'ТРЦ Глобус',a:'пл. Незалежності, 1',r:'4.5',f:35,t:80,p:40,d:'0.7',x:300,y:530},{n:'Паркінг Майдан',a:'вул. Інститутська, 5',r:'4.4',f:8,t:30,p:55,d:'0.8',x:560,y:520}];
+const U={x:410,y:430};let L=0,S=-1,min=30,total=0,left=0,iv=null,pay=0,endT='';
+function go(id){Q('.s').forEach(s=>s.classList.toggle('on',s.id===id));if(id==='main')setTimeout(()=>{fit();},0)}
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1800)}
+/* ===== MAP ===== */
+const NS='http://www.w3.org/2000/svg',svg=$('svg'),W=$('world');let k=1,tx=0,ty=0,moved=0;
+let h='<rect x="-400" y="-400" width="1600" height="1600" fill="#141a2e"/>';
+h+='<path d="M-400 640 C 0 600 200 700 400 640 S 800 560 1200 620" fill="none" stroke="#1d3a7a" stroke-width="46" opacity=".7"/>';
+[[120,150,160,110],[620,380,120,90],[200,380,90,80]].forEach(r=>h+='<rect x="'+r[0]+'" y="'+r[1]+'" width="'+r[2]+'" height="'+r[3]+'" rx="10" fill="#17343a"/>');
+for(let i=0;i<=12;i++){const p=-100+i*100,m=(i==4||i==6);h+='<line x1="'+p+'" y1="-300" x2="'+p+'" y2="1100" stroke="'+(m?'#34437d':'#232c52')+'" stroke-width="'+(m?10:5)+'"/><line y1="'+p+'" x1="-300" y2="'+p+'" x2="1100" stroke="'+(i==3||i==5?'#34437d':'#232c52')+'" stroke-width="'+(i==3||i==5?10:5)+'"/>'}
+h+='<line x1="100" y1="700" x2="700" y2="100" stroke="#2c3866" stroke-width="7"/><text x="215" y="296" fill="#6f7db8" font-size="11" transform="rotate(0)">вул. Хрещатик</text><text x="455" y="508" fill="#6f7db8" font-size="11">вул. Інститутська</text>';
+h+='<g id="rt"></g><g id="pins"></g><g transform="translate('+U.x+' '+U.y+')" id="me"><circle r="14" fill="#3d7bf5" class="pulse"/><circle r="8" fill="#fff"/><circle r="5.500" fill="#1a35f5"/></g>';
+W.innerHTML=h;
+function view(){W.setAttribute('transform','translate('+tx+' '+ty+') scale('+k+')');Q('#pins .pin').forEach(p=>p.setAttribute('transform','translate('+p.dataset.x+' '+p.dataset.y+') scale('+1/k+')'));$('me').setAttribute('transform','translate('+U.x+' '+U.y+') scale('+1/k+')')}
+function size(){const r=svg.getBoundingClientRect();return[r.width||390,r.height||300]}
+function center(x,y,nk){if(nk)k=nk;const[w,hh]=size();tx=w/2-x*k;ty=hh/2-y*k-(($('map').classList.contains('max'))?0:20);view()}
+function fit(){if(!moved)center(440,395,.75)}
+function locate(){center(U.x,U.y,1);toast('Ви тут')}
+function zoomBy(f,cx,cy){const[w,hh]=size();cx=cx??w/2;cy=cy??hh/2;const nk=Math.min(2.6,Math.max(.6,k*f));f=nk/k;tx=cx-(cx-tx)*f;ty=cy-(cy-ty)*f;k=nk;view()}
+function expand(){const m=$('map');m.classList.toggle('max');$('lots').classList.toggle('hide');setTimeout(()=>center(U.x,U.y),260)}
+svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect();zoomBy(e.deltaY<0?1.15:1/1.15,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+const P=new Map();let pd=0;
+svg.addEventListener('pointerdown',e=>{svg.setPointerCapture(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);moved=0;pd=0});
+svg.addEventListener('pointermove',e=>{if(!P.has(e.pointerId))return;const o=P.get(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);
+ if(P.size==1){tx+=e.clientX-o[0];ty+=e.clientY-o[1];pd+=Math.abs(e.clientX-o[0])+Math.abs(e.clientY-o[1]);if(pd>6)moved=1;view()}
+ else if(P.size==2){const[a,b]=[...P.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(svg._d)zoomBy(d/svg._d,(a[0]+b[0])/2-svg.getBoundingClientRect().left,(a[1]+b[1])/2-svg.getBoundingClientRect().top);svg._d=d;moved=1}});
+['pointerup','pointercancel'].forEach(t=>svg.addEventListener(t,e=>{P.delete(e.pointerId);svg._d=0}));
+function pins(){const g=$('pins');const q=$('q').value.toLowerCase();g.innerHTML=lots.map((l,i)=>(l.n+l.a).toLowerCase().includes(q)?'<g class="pin'+(i==S?' sel':'')+'" data-x="'+l.x+'" data-y="'+l.y+'" data-i="'+i+'"><circle class="b" r="17" cy="-18" fill="#1a35f5" stroke="#fff" stroke-width="2"/><text y="-12.500" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">P</text><rect x="6" y="-42" width="24" height="16" rx="8" fill="#22c55e"/><text x="18" y="-30" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">'+l.f+'</text></g>':'').join('');
+ Q('#pins .pin').forEach(p=>p.addEventListener('click',()=>{if(moved)return;const i=+p.dataset.i;if(S===i)openLot(i);else selectLot(i)}));view()}
+function route(){const r=$('rt');r.innerHTML=S<0?'':'<path class="route" d="M'+U.x+' '+U.y+' L'+lots[S].x+' '+U.y+' L'+lots[S].x+' '+lots[S].y+'" fill="none" stroke="#7aa2ff" stroke-width="5" stroke-dasharray="9 7" stroke-linecap="round" stroke-linejoin="round"/>'}
+function selectLot(i){S=i;pins();route();render();const l=lots[i];center((U.x+l.x)/2,(U.y+l.y)/2-10,Math.min(1.3,k<1?1:k));toast(l.n+' · '+l.d+' км. Натисніть ще раз, щоб відкрити')}
+function render(){const q=$('q').value.toLowerCase(),f=lots.map((l,i)=>[l,i]).filter(([l])=>(l.n+l.a).toLowerCase().includes(q));
+ $('cnt').textContent=f.length+' місць';$('ll').innerHTML=f.length?f.map(([l,i])=>'<button class="card lot'+(i==S?' sel':'')+'" onclick="openLot('+i+')"><div class="t"><span class="ico g">'+ic('park')+'</span><div>'+l.n+'<small>'+l.a+'</small></div><span class="star">'+ic('star')+l.r+'</span></div><div class="r"><span>'+ic('clock')+l.d+' км</span><span><i class="dot"></i>'+l.f+'/'+l.t+' вільно</span><b>'+l.p+' ₴/год</b></div></button>').join(''):'<p class="mut" style="text-align:center;padding:20px 0">Нічого не знайдено. Спробуйте іншу адресу</p>';pins()}
+/* ===== FLOW ===== */
+function openLot(i){L=i;const l=lots[i];$('dn').textContent=l.n;$('da').textContent=l.a;$('dd').textContent=l.d+' км від вас';$('dr').textContent=l.r;$('df').textContent=l.f+'/'+l.t;$('dp').textContent=l.p+'₴/год';Q('.ln').forEach(e=>e.textContent=l.n);Q('.rt').forEach(e=>e.textContent=l.r);Q('.la').forEach(e=>e.textContent=l.a);S=i;setMin(min);go('det')}
+const cost=()=>Math.round(lots[L].p*min/60*100)/100,fmt=m=>m>=60&&m%60==0?m/60+' год':m+' хв';
+function setMin(m){min=m;const c=cost();$('tp').textContent=c+' ₴';$('tr').textContent=lots[L].p+' ₴/год';$('tmn').textContent=fmt(m);$('s1').textContent=c+' ₴';$('s2').textContent=fmt(m);$('pm').textContent=fmt(m);$('pt').textContent=c.toFixed(2)+' ₴';$('pb2').textContent='Оплатити '+c.toFixed(2)+' ₴ через '+(pay?'картку':'Apple Pay');Q('#dial button,.pre button').forEach(b=>b.classList.toggle('on',+b.dataset.m===m))}
+const D=$('dial');for(let i=1;i<=12;i++){const a=(i*30-90)*Math.PI/180,b=document.createElement('button');b.textContent=i;b.dataset.m=i*5;b.setAttribute('aria-label',i*5+' хв');b.style.left=90+68*Math.cos(a)+'px';b.style.top=90+68*Math.sin(a)+'px';b.onclick=()=>setMin(i*5);D.appendChild(b)}
+Q('.pre button').forEach(b=>b.onclick=()=>setMin(+b.dataset.m));
+function pick(i){pay=i;Q('.pm').forEach((e,j)=>e.classList.toggle('on',j===i));setMin(min)}
+function paid(){total=min*60;left=total;const e=new Date(Date.now()+total*1000);endT=e.toTimeString().slice(0,5);$('an').textContent=lots[L].n;$('ap').textContent=cost()+' ₴';$('act').classList.add('on');
+ const n=+$('hn').textContent+1;$('hn').textContent=n;$('hm').textContent=n;$('hs').textContent=(200+cost())+' ₴';
+ $('hl').insertAdjacentHTML('afterbegin','<div class="card hist"><div class="h"><span>'+ic('cal',14)+'Сьогодні<br>до '+endT+'</span><em class="a">Активне</em></div><div class="m"><span class="ico g">'+ic('pin')+'</span><div>'+lots[L].a+'<small class="mut" style="display:block;font-weight:400">'+lots[L].n+'</small></div></div><div class="f"><div><small>Тривалість</small>'+fmt(min)+'</div><div><small>Вартість</small>'+cost()+' ₴</div></div></div>');
+ clearInterval(iv);tick();iv=setInterval(tick,1000);go('main');toast('Оплачено. Паркування активовано')}
+function tick(){const h=Math.floor(left/3600),m=Math.floor(left%3600/60),s=left%60,p=n=>String(n).padStart(2,'0');$('tm').textContent=p(h)+':'+p(m)+':'+p(s);$('pb').style.width=Math.max(0,left/total*100)+'%';if(left--<=0){clearInterval(iv);$('act').classList.remove('on');toast('Паркування завершено')}}
+setMin(30);render();setTimeout(fit,50);addEventListener('resize',fit);
+</script></body></html>
